@@ -12,18 +12,20 @@ class BATTLETANKS_API ATank : public APawn
 {
 	GENERATED_BODY()
 
-private:
-	// Sets default values for this pawn's properties
-	ATank();
-	UTankAimingComponent* TankAimingComponent = nullptr;
+public:
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+	void AimAt(FVector HitLocation);
 
 protected:
 	virtual void BeginPlay() override;	
 	virtual void Tick(float DeltaTime) override;
+	UTankAimingComponent* TankAimingComponent = nullptr;
 
-public:	
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	void AimAt(FVector HitLocation);
-
+private:
+	// Sets default values for this pawn's properties
+	ATank();
 };

@@ -37,4 +37,3 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	auto MyTankName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s is aiming at %s"), *MyTankName, *HitLocation.ToString());
 }
-
